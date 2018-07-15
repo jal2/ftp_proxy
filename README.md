@@ -18,7 +18,7 @@ This needs a line
 ```
 WSGIScriptAlias /ftp_proxy /var/www/html/ftp_proxy.py
 ```
-e.g. in *conf-enabled/wsgi.conf
+e.g. in *conf-enabled/wsgi.conf*
 
 ### Get Rid of CGI Parameters in the URL
 In order to be able to call
@@ -27,8 +27,8 @@ wget http://localhost/ftp/ftp.gnu.org/gnu/hello/hello-2.7.tar.gz
 ```
 we may rewrite the url. Put
 ```
-        RewriteEngine on
-        RewriteRule ^/ftp/(.*)$ /ftp_proxy?ftpurl=$1 [L,R,H=wsgi-script]
+RewriteEngine on
+RewriteRule ^/ftp/(.*)$ /ftp_proxy?ftpurl=$1 [L,R,H=wsgi-script]
 ```
 into *sites-enabled/000-default.conf*. We also need the *WSGIScriptAlias* from above.
 
