@@ -3,7 +3,7 @@ This WSGI script implements a http to ftp proxy for Apache2 (tested under Ubuntu
 Nexus Repository Manager from Sonatype is able to base raw proxies on http and https,
 but not on ftp and this script shall help to circumvent this.
 
-This is my first attempt on WSGI, Python programming and Apache2 configuration, please be nice with any comments :-)
+This is my first attempt on WSGI, Python programming and Apache2 configuration, please be gentle with your comments :-)
 
 ## Invocation
 
@@ -32,7 +32,12 @@ RewriteRule ^/ftp/(.*)$ /ftp_proxy?ftpurl=$1 [L,R,H=wsgi-script]
 ```
 into *sites-enabled/000-default.conf*. We also need the *WSGIScriptAlias* from above.
 
+## Limitiations
+
+1. No handling of authentication for ftp.
+
 ## TODO
 1. Test with Nexus Repository Manager.
 2. ~~Use mod_rewrite of Apache2 to get rid of the CGI style parameter passing in the URL - I'm not sure, if Nexus Repository Manager is happy with this. Preferably, the download above should work with this URL:
 *http://localhost/ftp/ftp.gnu.org/gnu/hello/hello-2.7.tar.gz*~~
+3. Test with escaped chars in the ftp URL.
